@@ -15,7 +15,7 @@ class TennisGame {
     
     public function getScore(){
         if ($this->hasWinner()) {
-            return $this->playerWithHigherScore() . "Wins";
+            return $this->playerWithHigherScore() . " Wins";
         }
         
         if ($this->hasAdvantage()) {
