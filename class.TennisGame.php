@@ -60,8 +60,7 @@ class TennisGame {
     }
     
     public function playerOneScores(){
-        if ($this->playerWithAdvantage != $this->playerOneName){
-            $this->playerWithAdvantage = $this->playerOneName;
+        if (!$this->checkDeduceAndResetAdvantage($this->playerOneName)){
             return;
         }
         $this->playerOneScore++;
@@ -71,8 +70,7 @@ class TennisGame {
     }
     
     public function playerTwoScores(){
-        if ($this->playerWithAdvantage != $this->playerTwoName){
-            $this->playerWithAdvantage = $this->playerTwoName;
+        if (!$this->checkDeduceAndResetAdvantage($this->playerTwoName)){
             return;
         }
         $this->playerTwoScore++;
@@ -81,6 +79,15 @@ class TennisGame {
         }
     }
     
+    private function checkDeduceAndResetAdvantage($playerName){
+        if ($this->playerWithAdvantage != $playerName){
+            $this->playerWithAdvantage = "";
+            return TRUE;
+        }
+        return FALSE;
+    }
+
+
     private function translateScore($score){
         switch ($score) {
             case 0:
